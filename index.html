@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-alpine.css"/>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise/dist/ag-grid-enterprise.min.js"></script>
+    <title>Hall Of Sole</title>
+</head>
+<body>
+    <header class="header">
+        <a href="https://www.instagram.com/hallofsole/" target="_blank">
+            <img src="logo.png" alt="Logo" class="logo">
+        </a>
+
+        <h1 class="brand-name">Hall Of Sole</h1>
+
+        <!-- Contact us icon on the right -->
+        <a href="https://www.instagram.com/hallofsole/" target="_blank" class="contact-icon">
+            <img src="contact-icon.png" alt="Contact Us">
+        </a>
+    </header>
+
+    <div class='container'>
+        <h1>Inventory</h1>
+
+        <input type="text" id="search-input" placeholder="Search...">
+
+        <div class="d-flex justify-content-center"> <div class="spinner-border" role="status" id="loading"> <span class="sr-only">Loading...</span> </div></div>
+
+        <div id="grid-container" class="ag-theme-alpine"></div>
+    </div>
+
+</body>
+</html>
+
+
