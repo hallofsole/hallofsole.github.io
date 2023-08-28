@@ -11,7 +11,7 @@ async function getapi(url) {
   const searchInput = document.querySelector('#search-input');
 
   const columnDefs = [
-    { headerName: "Brand", field: 'brand', sort:'asc', rowGroup: true, hide:true},
+    { headerName: "Brand", field: 'brand', sort:'asc', sortable: true, filter: 'agTextColumnFilter', floatingFilter:true},
     { headerName: 'Item', field: 'name', sort:'asc', sortable: true, filter: 'agTextColumnFilter'},
     { headerName: 'Size', field: 'size', sortable: true, filter: 'agTextColumnFilter', floatingFilter:true},
     { headerName: 'Availbale Quantity', field: 'count', aggFunc: 'sum'}
