@@ -38,7 +38,7 @@ async function getapi(url) {
 }
 // Calling that async function
 document.addEventListener('DOMContentLoaded', function () {
-  // getapi(API_URL);
+  getapi(API_URL);
 });
 
 // Function to hide the loader
