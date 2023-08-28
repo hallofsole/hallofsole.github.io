@@ -12,19 +12,15 @@ async function getapi(url) {
 
   const columnDefs = [
     { headerName: "Brand", field: 'brand', sort:'asc', rowGroup: true, hide:true},
-    { headerName: 'Item', field: 'name', sortable: true, filter: 'agTextColumnFilter', rowGroup:true, hide:true},
+    { headerName: 'Item', field: 'name', sort:'asc', sortable: true, filter: 'agTextColumnFilter'},
     { headerName: 'Size', field: 'size', sortable: true, filter: 'agTextColumnFilter', floatingFilter:true},
-    { headerName: 'Availbale Quantity', field: 'count', aggFunc: 'sum'},
-    { headerName: 'Status', field: 'status'}
+    { headerName: 'Availbale Quantity', field: 'count', aggFunc: 'sum'}
   ];
 
   const gridOptions = {
     columnDefs: columnDefs,
     rowData: jsonData,
-    onFirstDataRendered: onFirstDataRendered,
-    isGroupOpenByDefault: params => {
-        return (params.field == 'name')
-    },
+    onFirstDataRendered: onFirstDataRendered
   };
 
   hideloader();
