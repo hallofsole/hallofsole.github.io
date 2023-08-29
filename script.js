@@ -2,7 +2,7 @@
 const API_URL = "https://8ag1p2bz7e.execute-api.eu-north-1.amazonaws.com/default/send_stock/a";
 
 async function getapi(url) {
-    const response = await fetch(url);
+  const response = await fetch(url);
 
   const jsonData = await response.json();
 
@@ -12,7 +12,7 @@ async function getapi(url) {
 
   const columnDefs = [
     { headerName: "Brand", field: 'brand', sort:'asc', sortable: true, filter: 'agTextColumnFilter', floatingFilter:true},
-    { headerName: 'Item', field: 'name', sort:'asc', sortable: true, filter: 'agTextColumnFilter'},
+    { headerName: 'Item', field: 'name', sort:'asc', sortable: true, filter: 'agTextColumnFilter', minWidth:350},
     { headerName: 'Size', field: 'size', sortable: true, filter: 'agTextColumnFilter', floatingFilter:true},
     { headerName: 'Availbale Quantity', field: 'count', aggFunc: 'sum'}
   ];
@@ -20,16 +20,21 @@ async function getapi(url) {
   const gridOptions = {
     columnDefs: columnDefs,
     rowData: jsonData,
-    onFirstDataRendered: onFirstDataRendered
+    onFirstDataRendered: onFirstDataRendered,
   };
 
   hideloader();
 
   // Create the AG Grid instance
   new agGrid.Grid(gridContainer, gridOptions);
+  
   searchInput.addEventListener('input', () => {
     const searchText = searchInput.value.toLowerCase();
     gridOptions.api.setQuickFilter(searchText);
+  });
+  
+  window.addEventListener('resize', function() {
+    gridOptions.api.sizeColumnsToFit();
   });
 }
 // Calling that async function
@@ -39,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Function to hide the loader
 function hideloader() {
-	document.getElementById('loading').style.display = 'none';
+  document.getElementById('loading').style.display = 'none';
 }
 
 function onFirstDataRendered(params) {
