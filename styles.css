@@ -5,25 +5,6 @@ body, h1, h2, h3, p, ul, li {
   padding: 0;
 }
 
-/* Style for the search input */
-#search-input {
-  width: 80%; /* Set a specific width for the search input */
-  margin-bottom: 10px; /* Add some space below the search bar */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
-  transition: border-color 0.3s, box-shadow 0.3s;
-  width: 80%; /* Set a specific width for the search input */
-}
-
-#search-input:focus {
-  outline: none;
-  border-color: #3498db;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 6px rgba(52, 152, 219, 0.5);
-}
-
 /* Center the search input horizontally */
 .container {
   display: flex;
@@ -70,4 +51,52 @@ body, h1, h2, h3, p, ul, li {
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
 
+/* Style for the search-copy wrapper */
+.search-copy-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* Style for the search input */
+#search-input {
+  width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 6px rgba(52, 152, 219, 0.5);
+}
+
+/* Style for the copy button */
+#copy-button {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+#copy-button:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 6px rgba(52, 152, 219, 0.5);
+}
+
+#copy-button:hover {
+  background-color: #f2f2f2;
+}
