@@ -1,12 +1,14 @@
-// Dummy API URL; replace with your actual API URL
 const API_URL = "https://8ag1p2bz7e.execute-api.eu-north-1.amazonaws.com/default/send_stock/a";
+
+let jsonData =  ""
+
+let gridOptions = {}
 
 async function getapi(url) {
   const response = await fetch(url);
 
-  const jsonData = await response.json();
+  jsonData = await response.json();
 
-  // Get a reference to the grid container element
   const gridContainer = document.querySelector('#grid-container');
   const searchInput = document.querySelector('#search-input');
 
@@ -14,10 +16,10 @@ async function getapi(url) {
     { headerName: "Brand", field: 'brand', sort:'asc', sortable: true, filter: 'agTextColumnFilter', floatingFilter:true},
     { headerName: 'Item', field: 'name', sort:'asc', sortable: true, filter: 'agTextColumnFilter', minWidth:350},
     { headerName: 'Size', field: 'size', sortable: true, filter: 'agTextColumnFilter', floatingFilter:true},
-    { headerName: 'Availbale Quantity', field: 'count', aggFunc: 'sum'}
+    { headerName: 'Availbale Quantity', field: 'count'}
   ];
 
-  const gridOptions = {
+  gridOptions = {
     columnDefs: columnDefs,
     rowData: jsonData,
     onFirstDataRendered: onFirstDataRendered,
@@ -27,26 +29,34 @@ async function getapi(url) {
 
   // Create the AG Grid instance
   new agGrid.Grid(gridContainer, gridOptions);
-  
   searchInput.addEventListener('input', () => {
     const searchText = searchInput.value.toLowerCase();
     gridOptions.api.setQuickFilter(searchText);
   });
-  
   window.addEventListener('resize', function() {
     gridOptions.api.sizeColumnsToFit();
   });
 }
-// Calling that async function
+
 document.addEventListener('DOMContentLoaded', function () {
   getapi(API_URL);
 });
 
 // Function to hide the loader
 function hideloader() {
-  document.getElementById('loading').style.display = 'none';
+	document.getElementById('loading').style.display = 'none';
 }
 
 function onFirstDataRendered(params) {
   params.api.sizeColumnsToFit();
+
+}
+
+function copyAll(){
+  var text = gridOptions.api.getDataAsCsv({columnSeparator: "\t"})
+  navigator.clipboard.writeText(text).then(function() {
+    console.log('Async: Copying to clipboard was successful!');
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
 }
